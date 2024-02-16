@@ -1,0 +1,61 @@
+.modal-cont{
+    position: absolute;
+    background-color: #00000069;
+    width: fit-content;
+    height: fit-content;
+    padding: 1% 1% 3% 1%;
+    left: 10%;
+    top: 5%;
+    border-radius: 5%;
+}
+
+.modal-selector{
+    font-size: 1.8vh;
+}
+.modal-input{
+    font-size: 1.8vh;
+
+}
+
+.delete-btn{
+    background-color: #e72626;
+    font-size: 1.9vh;
+}
+
+.add-btn{
+    background-color: #72c7ff;
+    width: 100%;
+    font-size:3vh;
+    margin: 3% 0%;
+}
+
+
+.save-btn{
+    background-color: #72ff72;
+    width: 100%;
+    font-size:3vh;
+    margin: 0% 0%;
+}
+.move-modal{
+    background-color: #88d3ff;
+    font-size:2vh;
+    margin: 0% 2%;
+    cursor: move
+}
+
+.text-modal{
+    width: 40vh;
+    height: 20vh;
+    font-size: 2vh;
+}
+
+
+#background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1000;
+}

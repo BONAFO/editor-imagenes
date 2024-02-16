@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/cens.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="../../../../Downloads/activa-6g-right-front-three-quarter.webp" id="background" alt="">
+
+    </div>
+    <div id="container"></div>
+    <div class="text-container" id="text-container"></div>
+
+    <button class="ui" id="captureButton">Capturar imagen</button>
+    <button class="ui" id="cens-cir">Make cen</button>
+    <button class="ui" id="cens-sq">Make sq</button>
+    <button class="ui" id="text">Make text</button>
+
+    <ul class="dropdown" id="dropdownMenu">
+        <li id="option-move">Move</li>
+        <li id="option-style">Style</li>
+        <li  id="option-edit">Edit Text</li>
+        <li  id="option-delete">Delete</li>
+        <li id="option-close">Close</li>
+    </ul>
+
+    <input  class="ui"  type="file" id="background-select" accept="image/png, image/jpeg, image/jpg, image/gif, image/svg+xml, image/webp">
+    
+
+
+
+    <div id="style-cont"></div>
+
+
+    <script src="dropdown/dropdown.js"></script>
+    <script src="dropdown/modal.style.js"></script>
+    <script src="dropdown/modal.edit.js"></script>
+
+    <script src="trash.js"></script>
+    <script src="creators/creator.js"></script>
+    <script src="creators/cens.js"></script>
+    <script src="creators/text.js"></script>
+    <script src="shorcuts.js"></script>
+    <script src="dropdown/option-move.js"></script>
+    <script src="dropdown/option-close.js"></script>
+    <script src="dropdown/option-style.js"></script>
+    <script src="dropdown/option-delete.js"></script>
+    <script src="dropdown/option-edit.js"></script>
+    <script src="creators/background.js"></script>
+
+
+    
+</body>
+</html>

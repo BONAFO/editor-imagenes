@@ -1,0 +1,39 @@
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #e72626;
+    z-index:2000;
+
+  }
+
+  .square {
+    position: absolute;
+    background-color: #e72626;
+    z-index:2000;
+  }
+
+  .text-container{
+    position: absolute;
+    z-index:3000;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 100000;
+}
+
+.dropdown li {
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: lightgray;
+}
+

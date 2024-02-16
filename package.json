@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "electron": "^28.2.3"
+  },
+  "scripts": {"start": "electron ."}
+}
