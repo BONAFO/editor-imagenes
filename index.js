@@ -122,6 +122,7 @@ async function captureScreenOri() {
       if (err) {
         console.error('Error al guardar la captura de pantalla:', err);
       } else {
+        mainWindow.webContents.send('capture-success', 'Captura Creada Satisfactoriamente.');
         console.log('Captura de pantalla guardada correctamente en:', filePath);
       }
     });

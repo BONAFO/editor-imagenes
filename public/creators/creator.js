@@ -80,7 +80,15 @@ document.getElementById('captureButton').addEventListener('click', function() {
       }
       showUI()
     }, 1000);
+
+
+
+
+    ipcRenderer.on('capture-success',(e, msj)=>{
+      console.log(msj);
+    })
   });
+
 
 
 
