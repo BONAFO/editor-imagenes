@@ -4,7 +4,9 @@ const { desktopCapturer , ipcMain , app, BrowserWindow , dialog} = require('elec
 const fs = require('fs');
 const path = require('path');
 const url = require('url');5
+const util = require('util');
 
+const read = util.promisify(fs.readdir);
 // async function captureScreen() {
 //   try {
 //     const sources = await desktopCapturer.getSources({ types: ['screen'] });
@@ -83,10 +85,21 @@ app.on('activate', () => {
   }
 });
 
-function captureScreen() {
+
+const get_image_created =async ()=>{
+  const images = await read(path.join(__dirname, './Finished/'))
+  return Math.floor((images.length / 2) + 1)
+}
+
+get_image_created();
+
+
+
+async function captureScreenCens() {
   const image = mainWindow.webContents.capturePage();
+  const index = await get_image_created();
   image.then(img => {
-    const filePath = path.join(__dirname, '/Finished/1.png');
+    const filePath = path.join(__dirname, '/Finished/' + "cens_" + index + ".png");
     fs.writeFile(filePath, img.toPNG(), err => {
       if (err) {
         console.error('Error al guardar la captura de pantalla:', err);
@@ -100,8 +113,31 @@ function captureScreen() {
 }
 
 
-ipcMain.on('capture-screen', (event, base64Image) => {
-  captureScreen()
+async function captureScreenOri() {
+  const image = mainWindow.webContents.capturePage();
+  const index = await get_image_created();
+  image.then(img => {
+    const filePath = path.join(__dirname, '/Finished/' + "orig_" + index + ".png");
+    fs.writeFile(filePath, img.toPNG(), err => {
+      if (err) {
+        console.error('Error al guardar la captura de pantalla:', err);
+      } else {
+        console.log('Captura de pantalla guardada correctamente en:', filePath);
+      }
+    });
+  }).catch(err => {
+    console.error('Error al capturar la pantalla:', err);
+  });
+}
+
+
+
+ipcMain.on('capture-screen-cens', (event, base64Image) => {
+  captureScreenCens()
+});
+
+ipcMain.on('capture-screen-ori', (event, base64Image) => {
+  captureScreenOri()
 });
 
 
@@ -109,5 +145,6 @@ ipcMain.on('capture-screen', (event, base64Image) => {
 // console.log("HOLA DESDE BACKEND");
 // e.sender.send("test-res", "I SEE YOU!!")
 // })
+
 
 

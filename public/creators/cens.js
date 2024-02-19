@@ -116,6 +116,7 @@ const Cens = () => {
       mask.style.borderRadius = "50%";
     }
       mask.id= 'cens-' + counter;
+      mask.className ="cens";
       mask.style.backdropFilter = "blur(10px)"; // Aplica un filtro de desenfoque
       document.body.appendChild(mask);
       counter++

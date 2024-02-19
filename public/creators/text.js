@@ -1,6 +1,7 @@
 const container = document.getElementById("text-container");
 let writting = false;
 let on_writting = ''
+// const profiles =[];
 // document.onclick = (evt) => {
 
 // }
@@ -15,7 +16,9 @@ const gen_Text =()=>{
         input.style.left = startX + "px";
         input.style.top = startY + "px";
         input.id = "cen" + "-" + counter;
-       
+        input.addEventListener("contextmenu", function (evt) {
+            show_dropdown(evt)
+        });
         on_writting ="cen" + "-" + counter;
         container.appendChild(input);
         counter++;

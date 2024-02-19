@@ -172,12 +172,16 @@ const modal_style = () => {
 
   const selector = document.createElement("select");
   selector.className = "modal-selector";
+  selector.id = "selector-profile";
 
   const option_base = document.createElement("option");
   option_base.value = "-1";
   option_base.textContent = "My Profiles";
   selector.append(option_base);
 
+ 
+
+  
   const add_change_btn = document.createElement("button");
   add_change_btn.className = 'add-btn';
   
@@ -207,6 +211,11 @@ const modal_style = () => {
     Object.keys(data).map(k =>{
       document.getElementById(element_onfocus).style[k] = data[k];
     })
+
+    if(selector.value !== -1){
+   
+      document.getElementById(element_onfocus).className = selector.value;
+    }
     
 
   }
@@ -223,7 +232,7 @@ const modal_style = () => {
   add_modificator(add_container);
   modal_cont.append(add_change_btn);
   modal_cont.append(save_change_btn);
-
+  add_profiles_to_selector();
 
 
   const modal = modal_cont; // Utiliza el elemento modal_cont que acabas de crear
@@ -261,4 +270,25 @@ const modal_style = () => {
 };
 
 
+const add_profiles_to_selector =()=>{
+  profiles.map(prof => {
+    const container = document.getElementById('selector-profile');
+    const option = document.createElement('option');
+    option.id = '';
+    option.className = '';
+    option.value= prof.classes;
+    option.textContent= prof.id;
+    container.append(option)
+  })
+}
 
+const create_profile =(id, classes)=>{
+  profiles.push({id : id, classes : classes})
+}
+
+
+const create_profiles =()=>{
+  create_profile('test', ['test_1']);
+}
+
+create_profiles()
