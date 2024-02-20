@@ -60,32 +60,51 @@ document.getElementById('captureButton').addEventListener('click', function() {
 // img.src = "data:image/webp;base64," + base64String;
 
 
+promp_sw({
+  input_type:'text',
+   inputAttributes:{name:'filename'},
+   msj_success:()=>{},
+   placeholder:'filename',
+   title:'How you want to name this capture?',
 
-    hideUI()
-    
-    ipcRenderer.send('capture-screen-cens')
+  cb_success:(result)=>{
+    // console.log(result);
+
+    // hideUI()
+    let value = result.value.trim();
+    if(value.length == 0 ){
+      value = Date.now();
+    }
+    setTimeout(() => {
+      ipcRenderer.send('capture-screen-cens', value)
+    }, 500);
+
     setTimeout(() => {
       const cens = document.getElementsByClassName('cens');
       for (let i = 0; i < cens.length; i++) {
         cens[i].style.display ='none';
         
       }
-      ipcRenderer.send('capture-screen-ori')
-    }, 400);
+      ipcRenderer.send('capture-screen-ori' , value)
+    }, 1000);
+    
     setTimeout(() => {
       const cens = document.getElementsByClassName('cens');
       for (let i = 0; i < cens.length; i++) {
         cens[i].style.display ='inline-block';
-        
+        // alert_sw({title: 'Creating screenshot...', type: 'success'})
       }
       showUI()
-    }, 1000);
+    }, 1500);
+
+  }
+})
 
 
 
 
     ipcRenderer.on('capture-success',(e, msj)=>{
-      console.log(msj);
+       alert_sw({title: msj, type: 'success'})
     })
   });
 

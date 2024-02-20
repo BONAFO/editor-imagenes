@@ -155,7 +155,6 @@ document.getElementById("cens-cir").onclick = (evt) => {
   
 writting = false
 stop_Text()
-console.log(draw_mode);
   if (draw_mode) {
     evt.target.style.backgroundColor = "orange";
     last_stance = "circle";

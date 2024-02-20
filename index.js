@@ -6,6 +6,9 @@ const path = require('path');
 const url = require('url');5
 const util = require('util');
 
+
+
+
 const read = util.promisify(fs.readdir);
 // async function captureScreen() {
 //   try {
@@ -95,11 +98,12 @@ get_image_created();
 
 
 
-async function captureScreenCens() {
+async function captureScreenCens(filename) {
+  filename = filename + ".png";
   const image = mainWindow.webContents.capturePage();
-  const index = await get_image_created();
+
   image.then(img => {
-    const filePath = path.join(__dirname, '/Finished/' + "cens_" + index + ".png");
+    const filePath = path.join(__dirname, '/Finished/' + "cens/" + filename);
     fs.writeFile(filePath, img.toPNG(), err => {
       if (err) {
         console.error('Error al guardar la captura de pantalla:', err);
@@ -113,11 +117,12 @@ async function captureScreenCens() {
 }
 
 
-async function captureScreenOri() {
+async function captureScreenOri(filename) {
+  filename = filename + ".png";
+
   const image = mainWindow.webContents.capturePage();
-  const index = await get_image_created();
   image.then(img => {
-    const filePath = path.join(__dirname, '/Finished/' + "orig_" + index + ".png");
+    const filePath = path.join(__dirname, '/Finished/' + "ori/" + filename);
     fs.writeFile(filePath, img.toPNG(), err => {
       if (err) {
         console.error('Error al guardar la captura de pantalla:', err);
@@ -133,12 +138,12 @@ async function captureScreenOri() {
 
 
 
-ipcMain.on('capture-screen-cens', (event, base64Image) => {
-  captureScreenCens()
+ipcMain.on('capture-screen-cens', (e, filename) => {
+  captureScreenCens(filename)
 });
 
-ipcMain.on('capture-screen-ori', (event, base64Image) => {
-  captureScreenOri()
+ipcMain.on('capture-screen-ori', (e, filename) => {
+  captureScreenOri(filename)
 });
 
 
