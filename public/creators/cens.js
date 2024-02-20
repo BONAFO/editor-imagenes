@@ -74,7 +74,7 @@ const Cens = () => {
   let circle;
   let mask;
 
-  console.log(last_stance);
+
   function updateCircleSize(x, y) {
       // Calcula el radio y la posición del círculo
       const radiusX = Math.abs(x - startX) / 2;
@@ -116,7 +116,7 @@ const Cens = () => {
       mask.style.borderRadius = "50%";
     }
       mask.id= 'cens-' + counter;
-      mask.className ="cens";
+      mask.className ="cens cen-ele";
       mask.style.backdropFilter = "blur(10px)"; // Aplica un filtro de desenfoque
       document.body.appendChild(mask);
       counter++
@@ -154,7 +154,7 @@ document.getElementById("cens-cir").onclick = (evt) => {
   }
   
 writting = false
-
+stop_Text()
 console.log(draw_mode);
   if (draw_mode) {
     evt.target.style.backgroundColor = "orange";
@@ -163,6 +163,7 @@ console.log(draw_mode);
   } else {
     evt.target.style.backgroundColor = "#ffffff";
     last_stance = "";
+    stop_Cen()
   }
 };
 
@@ -180,7 +181,7 @@ document.getElementById("cens-sq").onclick = (evt) => {
   
 
 writting = false
-
+stop_Text()
   if (draw_mode) {
     evt.target.style.backgroundColor = "orange";
     last_stance = "square";
@@ -188,103 +189,8 @@ writting = false
   } else {
     evt.target.style.backgroundColor = "#ffffff";
     last_stance = "";
+    stop_Cen()
   }
 };
 
-
-// let draw_circle = false;
-
-// let last_stance = "";
-// let isDrawing = false;
-// let circle;
-// let startX, startY;
-// let counter = 0;
-
-// const allow_draw = () => {
-//   if (draw_mode) {
-//     Cens();
-//   } else {
-//     stop_Cen();
-//   }
-// };
-
-// const stop_Cen = () => {
-//   document.onmousedown = () => {};
-//   document.onmousemove = () => {};
-
-//   document.onmouseup = () => {};
-// };
-
-// const Cens = () => {
-//   function updateShapeSize(x, y) {
-//       // Calcular el tamaño y la posición del cuadrado o círculo
-//       const width = Math.abs(x - startX);
-//       const height = Math.abs(y - startY);
-//       const left = Math.min(startX, x);
-//       const top = Math.min(startY, y);
-
-//       // Establecer el tamaño y la posición del elemento de dibujo
-//       shape.style.width = width + "px";
-//       shape.style.height = height + "px";
-//       shape.style.left = left + "px";
-//       shape.style.top = top + "px";
-
-//       // Si el elemento es un círculo, ajustar el radio y la posición para que el círculo esté centrado
-//       if (last_stance === "circle") {
-//           const radius = Math.min(width, height) / 2;
-//           const centerX = left + width / 2;
-//           const centerY = top + height / 2;
-//           shape.style.borderRadius = radius + "px";
-//           shape.style.left = centerX - radius + "px";
-//           shape.style.top = centerY - radius + "px";
-//       }
-//   }
-
-//   document.onmousedown = (evt) => {
-//       isDrawing = true;
-//       startX = evt.clientX;
-//       startY = evt.clientY;
-//       shape = document.createElement("div");
-//       shape.classList.add(last_stance);
-//       shape.style.left = startX + "px";
-//       shape.style.top = startY + "px";
-//       shape.id = "shape" + "-" + counter;
-
-//       shape.addEventListener("contextmenu", function (evt) {
-//           show_dropdown(evt)
-//       });
-
-//       document.getElementById("container").appendChild(shape);
-//       counter++;
-//   };
-
-//   document.onmousemove = (evt) => {
-//       if (isDrawing) {
-//           updateShapeSize(evt.clientX, evt.clientY);
-//       }
-//   };
-
-//   document.onmouseup = () => {
-//       isDrawing = false;
-//   };
-// };
-
-
-
-// document.getElementById("cens-cir").onclick = () => {
-//   if(last_stance == "circle"){
-//     draw_mode = false;
-//   }else{
-//     draw_mode = true;
-//   }
-  
-// writting = false
-
-//   if (draw_mode) {
-//     last_stance = "circle";
-//     allow_draw();
-//   } else {
-//     last_stance = "";
-//   }
-// };
 

@@ -16,6 +16,7 @@ const gen_Text =()=>{
         input.style.left = startX + "px";
         input.style.top = startY + "px";
         input.id = "cen" + "-" + counter;
+        input.className = 'cen-ele';
         input.addEventListener("contextmenu", function (evt) {
             show_dropdown(evt)
         });
